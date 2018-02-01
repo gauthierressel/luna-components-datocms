@@ -29,6 +29,8 @@ tmp
 .tmp*
 **.orig
 
+### DATOCMS
+/.env
 
 ### Editors meta-data
 

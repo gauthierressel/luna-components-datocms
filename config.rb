@@ -2,6 +2,14 @@
 # Page options, layouts, aliases and proxies
 ###
 
+# DATOCMS
+activate :dato, live_reload: true
+
+# enable livereload on development
+configure :development do
+  activate :livereload
+end
+
 # Layout
 page "/", :layout => "front"
 

@@ -8,77 +8,75 @@
     h2 LC Breadcrumb
     hr
 
+    .code
+      = dato.lc_breadcrumbs
+
     / luna-component: breadcrumb
-    = ui_component("lc-breadcrumb",
-      items: [ \
-        { \
-          label: "Page d'accueil",
-          href: "/",
-          title: "Retour à la page d'accueil",
-        },
-        { \
-          label: "Page liste",
-          href: "#",
-          title: "Aller à la page liste",
-        },
-        { \
-          label: "Page détail",
-          href: "#",
-          title: "Aller à la page détail",
-        },
-      ],
-      additional_classes: "",
-    )
+    - dato.lc_breadcrumbs.each do |breadcrumb|
+      - items = []
+      - breadcrumb.items.each do |item|
+        - items << { label: item.label, href: item.href, title: item.title }
+      = ui_component("lc-breadcrumb",
+        items: items,
+        additional_classes: "",
+      )
 
 
   .component
     h2 LC Button
     hr
 
-    = ui_component("lc-button",
-      label: "Bouton 1",
-      href: "#",
-      title: "Titre 1",
-      target: false,
-      as_button: false,
-      additional_classes: "",
-    )
+    .code
+      = dato.lc_buttons
+
+    / luna-component: button
+    - dato.lc_buttons.each do |button|
+      = ui_component("lc-button",
+        label: button.label,
+        href: button.href,
+        title: button.title,
+        target: button.target,
+        as_button: button.as_button,
+        additional_classes: "",
+      )
 
 
   .component
     h2 LC Grid & LC Card
     hr
 
+    .code
+      = dato.lc_cards
+
     .lc-grid
       .lc-grid__items
 
         - 3.times do
-          - title = lorem.words 5
-          - description = lorem.sentences 2
-          - picture = lorem.image("300x200")
-          - tags = lorem.words 1
-          - footer = lorem.name
           .lc-grid__item
             / luna-component: card (without button)
-            = ui_component("lc-card",
-              title: { \
-                label: title,
-                level: 2,
-              },
-              description: description,
-              href: "/",
-              picture: picture,
-              tags: { \
-                items: [tags],
-                separator: ", ",
-              },
-              footer: footer,
-              button: false,
-              is_article: true,
-              is_clickable: true,
-              footer_alignment: "left",
-              additional_classes: "",
-            )
+            - dato.lc_cards.each do |card|
+              - tags = []
+              - card.tags.each do |tag|
+                - tags << tag.label
+              = ui_component("lc-card",
+                title: { \
+                  label: card.title,
+                  level: card.level,
+                },
+                description: card.description,
+                href: card.href,
+                picture: card.picture.url,
+                tags: { \
+                  items: tags,
+                  separator: ", ",
+                },
+                footer: card.footer,
+                button: false,
+                is_article: card.is_article,
+                is_clickable: card.is_clickable,
+                footer_alignment: "left",
+                additional_classes: "",
+              )
 
         - 3.times do
           - title = lorem.words 5
