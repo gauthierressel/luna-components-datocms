@@ -1,0 +1,10 @@
+.container {
+  @include rem(max-width, $container-width + $gutter-size);
+  @include rem(margin, 50px auto);
+  @include rem(padding, 0 ($gutter-size / 2));
+  position: relative;
+}
+
+  .component {
+    @include rem(margin-top, 80px);
+  }

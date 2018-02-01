@@ -1,0 +1,294 @@
+.container
+
+  h1 Luna Components
+  hr
+
+
+  .component
+    h2 LC Breadcrumb
+    hr
+
+    / luna-component: breadcrumb
+    = ui_component("lc-breadcrumb",
+      items: [ \
+        { \
+          label: "Page d'accueil",
+          href: "/",
+          title: "Retour à la page d'accueil",
+        },
+        { \
+          label: "Page liste",
+          href: "#",
+          title: "Aller à la page liste",
+        },
+        { \
+          label: "Page détail",
+          href: "#",
+          title: "Aller à la page détail",
+        },
+      ],
+      additional_classes: "",
+    )
+
+
+  .component
+    h2 LC Button
+    hr
+
+    = ui_component("lc-button",
+      label: "Bouton 1",
+      href: "#",
+      title: "Titre 1",
+      target: false,
+      as_button: false,
+      additional_classes: "",
+    )
+
+
+  .component
+    h2 LC Grid & LC Card
+    hr
+
+    .lc-grid
+      .lc-grid__items
+
+        - 3.times do
+          - title = lorem.words 5
+          - description = lorem.sentences 2
+          - picture = lorem.image("300x200")
+          - tags = lorem.words 1
+          - footer = lorem.name
+          .lc-grid__item
+            / luna-component: card (without button)
+            = ui_component("lc-card",
+              title: { \
+                label: title,
+                level: 2,
+              },
+              description: description,
+              href: "/",
+              picture: picture,
+              tags: { \
+                items: [tags],
+                separator: ", ",
+              },
+              footer: footer,
+              button: false,
+              is_article: true,
+              is_clickable: true,
+              footer_alignment: "left",
+              additional_classes: "",
+            )
+
+        - 3.times do
+          - title = lorem.words 5
+          - description = lorem.sentences 2
+          - picture = lorem.image("300x200")
+          - tags = lorem.words 1
+          - footer = lorem.name
+          .lc-grid__item
+            / luna-component: card (with button)
+            = ui_component("lc-card",
+              title: { \
+                label: title,
+                level: 2,
+              },
+              description: description,
+              href: false,
+              picture: picture,
+              tags: { \
+                items: [tags],
+                separator: ", ",
+              },
+              footer: false,
+              button: { \
+                label: "Lire la suite ›",
+                href: "/",
+                classes: "button--primary",
+              },
+              is_article: true,
+              is_clickable: false,
+              footer_alignment: "right",
+              additional_classes: "",
+            )
+
+
+  .component
+    h2 LC List
+    hr
+
+    = ui_component("lc-list",
+      ordered: true,
+      items: [ \
+        "item 1",
+        "item 2",
+        "item 3",
+        "item 4",
+        "item 5",
+      ],
+      additional_classes: "",
+    )
+
+    br
+
+    = ui_component("lc-list",
+      ordered: false,
+      items: [ \
+        "item 1",
+        "item 2",
+        "item 3",
+        "item 4",
+        "item 5",
+      ],
+      additional_classes: "",
+    )
+
+    br
+
+    = ui_component("lc-list",
+      ordered: false,
+      items: [ \
+        "item 1",
+        "item 2",
+        "item 3",
+        "item 4",
+        { \
+          ordered: true,
+          label: "item 5",
+          items: [ \
+            "item 1",
+            "item 2",
+            "item 3",
+            "item 4",
+          ],
+        },
+        "item 6",
+      ],
+      additional_classes: "",
+    )
+
+
+  .component
+    h2 LC Table
+    hr
+
+    = ui_component("lc-table",
+      columns: 3,
+      head: [ \
+        "Head 1", "Head 2", "Head 3",
+      ],
+      body: [ \
+        "Item 1", "Item 2", "Item 3",
+        "Item 4", "Item 5", "Item 6",
+        "Item 7", "Item 8", "Item 9",
+      ],
+      foot: false,
+      ltr: false,
+      additional_classes: "",
+    )
+
+    br
+
+    = ui_component("lc-table",
+      columns: 3,
+      head: false,
+      body: [ \
+        "Item 1", "Item 2", "Item 3",
+        "Item 4", "Item 5", "Item 6",
+        "Item 7", "Item 8", "Item 9",
+        "Item 10", "Item 11", "Item 12",
+        "Item 13", "Item 14", "Item 15",
+      ],
+      foot: false,
+      ltr: true,
+      additional_classes: "",
+    )
+
+    br
+
+    = ui_component("lc-table",
+      columns: 3,
+      head: false,
+      body: [ \
+        "Item 1", "Item 2", "Item 3",
+        "Item 4", "Item 5", "Item 6",
+        "Item 7", "Item 8", "Item 9",
+      ],
+      foot: [ \
+        "Foot 1", "Foot 2", "Foot 3",
+      ],
+      ltr: false,
+      additional_classes: "",
+    )
+
+    br
+
+    = ui_component("lc-table",
+      columns: 3,
+      head: false,
+      body: [ \
+        "Item 1", "Item 2", "Item 3",
+        "Item 4", "Item 5", "Item 6",
+        "Item 7", "Item 8", "Item 9",
+        "Item 10", "Item 11", "Item 12",
+        "Item 13", "Item 14", "Item 15",
+      ],
+      foot: [ \
+        "Foot 1", "Foot 2", "Foot 3",
+      ],
+      ltr: true,
+      additional_classes: "",
+    )
+
+
+  .component
+    h2 LL Form
+    hr
+
+    = ui_component("lc-form",
+      id: "form1",
+      title: { \
+        label: "Mon formulaire",
+        level: 2,
+      },
+      description: "Ci-dessous mon premier formulaire Luna Component",
+      fields: [ \
+        [ \
+          { \
+            label: "Prénom",
+            tag: :input,
+            options: { \
+              "id": "firstname",
+              "type": "text",
+              "placeholder": "Mon prénom...",
+            },
+          },
+          { \
+            label: "Nom",
+            tag: :input,
+            options: { \
+              "id": "lastname",
+              "type": "text",
+              "placeholder": "Mon nom...",
+            },
+          },
+        ],
+        { \
+          label: "E-mail",
+          tag: :input,
+          options: { \
+            "id": "email",
+            "type": "email",
+            "placeholder": "Mon e-mail...",
+          },
+        },
+        # { \
+        #   label: "Message",
+        #   tag: :textarea,
+        #   options: { \
+        #     "id": "message",
+        #     "placeholder": "Mon message...",
+        #   },
+        # },
+      ],
+    )

@@ -1,0 +1,44 @@
+/**
+ * LUNA-COMPONENT
+ * Table
+ ********************************* */
+
+
+/ USAGE
+
+
+/ VARIABLES
+
+
+
+/ MARKUP
+table.lc-table(class=additional_classes)
+
+  - if head
+    thead.lc-table__head
+      tr.lc-table__row
+        - head.each_with_index do |item, index|
+          - tagname = (index == 0 && ltr) ? :th : :td
+          = content_tag tagname, :class => 'lc-table__cell' do
+            = item
+
+  - if body
+    tbody.lc-table__body
+      - body.each_with_index do |item, index|
+        - if index%columns == 0
+          - if index != 0
+            = "</tr>"
+
+          - tagname = ltr ? :th : :td
+
+          = "<tr class='lc-table__row'><#{tagname} class='lc-table__cell'>#{item}</#{tagname}>"
+        - else
+          = "<td class='lc-table__cell'>#{item}</td>"
+
+  - if foot
+    tfoot.lc-table__foot
+      tr.lc-table__row
+        - foot.each_with_index do |item, index|
+          - tagname = (index == 0 && ltr) ? :th : :td
+          = content_tag tagname, :class => 'lc-table__cell' do
+            = item

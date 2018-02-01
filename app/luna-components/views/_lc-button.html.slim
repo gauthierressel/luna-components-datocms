@@ -1,0 +1,29 @@
+/**
+ * LUNA-COMPONENT
+ * Button
+ ********************************* */
+
+
+/ USAGE
+
+
+/ VARIABLES
+
+- label = label || "En savoir plus"
+- tagname = as_button ? :button : :a
+
+- if as_button
+  - href = false
+  - title = false
+  - target = false
+- else
+  - href = href || "#"
+  - title = title || false
+  - target = target || "_self"
+
+
+
+/ MARKUP
+
+= content_tag tagname, :class => "lc-button #{additional_classes}", :href => href, :title => title, :target => target
+  span.lc-button__label = label

@@ -1,0 +1,54 @@
+/**
+ * LUNA-COMPONENT
+ * Card
+ ********************************* */
+
+
+/ USAGE
+
+
+/ VARIABLES
+
+- title = title || false
+- description = description || false
+- href = href || false
+- picture = picture || false
+- picture_alt = picture_alt || ""
+- tags = tags || false
+- footer = footer || false
+- tagname = is_article ? :article : :div
+- wrapper = is_clickable ? :a : :div
+- footer_class = footer_alignment ? "lc-card__footer--#{footer_alignment}" : ""
+
+
+/ MARKUP
+
+= content_tag tagname, :class => "lc-card #{additional_classes}"
+  = content_tag wrapper, :class => "lc-card__wrapper", :href => href
+    - if picture
+      figure.lc-card__figure
+        img.lc-card__picture(src=picture alt=picture_alt)
+    .lc-card__content
+      - if tags
+        .lc-card__tags
+          - tags[:items].each_with_index do |tag, index|
+            span.lc-card__tag= tag
+            - if index + 1 != tags[:items].length
+              span.lc-card__separator= tags[:separator]
+      - if title
+        <h#{title[:level]} class="lc-card__title">#{title[:label]}</h#{title[:level]}>
+      - if description
+        p.lc-card__description= description
+    - if footer || button
+      .lc-card__footer(class=footer_class)
+        - if footer
+          .lc-card__text = footer
+        - if button
+          = ui_component("lc-button",
+            label: button[:label],
+            href: button[:href],
+            title: "",
+            target: false,
+            as_button: false,
+            additional_classes: button[:classes],
+          )

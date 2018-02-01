@@ -1,0 +1,79 @@
+/**
+ * LUNA-COMPONENT
+ * Form
+ ********************************* */
+
+
+/ USAGE
+  = ui_component("lc-form",
+    id: "form1",
+    title: "Mon formulaire",
+    description: "Ci-dessous mon premier formulaire Luna Component",
+    fields: [ \
+      [ \
+        { \
+          label: "Prénom",
+          tag: "input",
+          options: [ \
+            id: "firstname",
+            type: "text",
+            placeholder: "Mon prénom...",
+          ],
+        },
+        { \
+          label: "Nom",
+          tag: "input",
+          options: [ \
+            id: "lastname",
+            type: "text",
+            placeholder: "Mon nom...",
+          ],
+        },
+      ],
+      { \
+        label: "E-mail",
+        tag: "input",
+        options: [ \
+          id: "email",
+          type: "email",
+          placeholder: "Mon e-mail...",
+        ],
+      },
+    ],
+  )
+
+/ VARIABLES
+
+
+
+/ MARKUP
+form.lc-form
+  
+  - if title
+    <h#{title[:level]} class="lc-form__title">#{title[:label]}</h#{title[:level]}>
+
+  - if description
+    p.lc-form__description= description
+
+
+  fieldset.lc-form__fieldset
+    - fields.each do |item|
+
+      .lc-form__item
+
+        / Group of fields
+        - if item.is_a?(Array)
+
+        / Field
+        - elsif item.is_a?(Hash)
+
+          / label
+          .lc-form__label= item[:label]
+
+          / field
+          - field_class = item[:options][:type] ? item[:options][:type] : item[:tag]
+          .lc-form__field(class="lc-form__field--#{field_class}")
+            = ui_component("form/lc-#{item[:tag]}",
+              options: item[:options],
+            )
+

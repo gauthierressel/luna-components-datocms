@@ -1,0 +1,48 @@
+/**
+ * LUNA-COMPONENT
+ * Grid
+ ********************************* */
+
+
+// Variables
+$lc-grid-columns: 2 !default;
+$lc-grid-spacing: 10px !default;
+
+
+// Styles
+.lc-grid {
+
+}
+
+  .lc-grid__items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include rem(margin-right, -$lc-grid-spacing);
+    @include rem(margin-left, -$lc-grid-spacing);
+  }
+
+    .lc-grid__item {
+
+      @if $lc-grid-columns == 1 {
+        width: 100%;
+      }
+
+      @else if $lc-grid-columns == 2 {
+        width: 50%;
+      }
+
+      @else if $lc-grid-columns == 3 {
+        width: 33.333%;
+      }
+
+      @else if $lc-grid-columns == 4 {
+        width: 25%;
+      }
+
+      @else if $lc-grid-columns == 5 {
+        width: 20%;
+      }
+
+      @include rem(padding, $lc-grid-spacing);
+    }

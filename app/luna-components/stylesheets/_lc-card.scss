@@ -1,0 +1,155 @@
+/**
+ * LUNA-COMPONENT
+ * Card
+ ********************************* */
+
+
+// Variables
+
+// Base
+$lc-card-padding: 20px !default;
+$lc-card-content-margin: 15px !default;
+$lc-card-color: #000 !default;
+$lc-card-background-color: #fff !default;
+
+// Border
+$lc-card-has-border: false !default;
+$lc-card-border-color: #dcdcdc !default;
+
+// Border-radius
+$lc-card-has-border-radius: true !default;
+$lc-card-border-radius: 5px !default;
+
+// Transition on hover
+// Available default transitions: fade, picture, scale
+$lc-card-transition: fade !default;
+$lc-card-transition-duration: 0.3s !default;
+
+
+// Styles
+.lc-card {
+  display: flex;
+  height: 100%;
+  background-color: $lc-card-background-color;
+  backface-visibility: hidden;
+
+  @if $lc-card-has-border { border: 1px solid $lc-card-border-color; }
+
+  @if $lc-card-has-border-radius {
+    border-radius: rem($lc-card-border-radius);
+    overflow: hidden;
+  }
+
+  // Animations
+  @if $lc-card-transition == "fade" {
+    opacity: 1;
+    transition: opacity $lc-card-transition-duration ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  @if $lc-card-transition == "picture" {
+
+    .lc-card__picture {
+      transition: transform $lc-card-transition-duration ease;
+    }
+
+    &:hover {
+
+      .lc-card__picture {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  @if $lc-card-transition == "scale" {
+    transition: transform $lc-card-transition-duration ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+  .lc-card__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-decoration: none;
+    color: $lc-card-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+    .lc-card__figure {
+      overflow: hidden;
+    }
+
+      .lc-card__picture {
+        width: 100%;
+      }
+
+    .lc-card__content {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto;
+      padding: rem($lc-card-padding);
+
+      > *:not(:first-child) {
+        margin-top: rem($lc-card-content-margin);
+      }
+    }
+
+      .lc-card__tags {
+        font-size: 0.65em;
+        line-height: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+        .lc-card__tag {
+
+        }
+
+        .lc-card__separator {
+
+        }
+
+      .lc-card__title {
+
+      }
+
+      .lc-card__description {
+
+      }
+
+    .lc-card__footer {
+      padding: rem($lc-card-padding);
+      padding-top: 0;
+
+      font-style: italic;
+
+      > *:not(:first-child) {
+        margin-top: rem($lc-card-content-margin);
+      }
+    }
+
+    .lc-card__footer--left {
+      text-align: left;
+    }
+
+    .lc-card__footer--center {
+      text-align: center;
+    }
+
+    .lc-card__footer--right {
+      text-align: right;
+    }
+
+      .lc-card__button {
+        display: inline-block;
+      }

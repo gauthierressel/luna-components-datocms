@@ -1,0 +1,28 @@
+/**
+ * LUNA-COMPONENT
+ * List
+ ********************************* */
+
+
+/ USAGE
+
+
+/ VARIABLES
+
+- tagname = ordered ? :ol : :ul
+
+/ MARKUP
+
+= content_tag tagname, :class => "lc-list #{additional_classes}"
+  - items.each do |item|
+    - if item.is_a?(Hash)
+      li.lc-list__item
+        - item_tagname = item[:ordered] ? :ol : :ul
+
+        = item[:label]
+        = content_tag item_tagname, :class => "lc-list"
+          - item[:items].each do |subitem|
+            li.lc-list__item = subitem
+
+    - else
+      li.lc-list__item = item

@@ -1,0 +1,48 @@
+/**
+ * LUNA-COMPONENT
+ * Breadcrumb
+ ********************************* */
+
+
+// Variables
+$lc-brdcr-weight: normal !default;
+$lc-brdcr-uppercase: false !default;
+$lc-brdcr-underline: false !default;
+$lc-brdcr-item-color: inherit !default;
+$lc-brdcr-link-color: inherit !default;
+$lc-brdcr-separator: "›" !default;
+$lc-brdcr-margin: 0 5px !default;
+
+
+// Styles
+.lc-breadcrumb {
+
+}
+
+  .lc-breadcrumb__item {
+    display: inline-block;
+    color: $lc-brdcr-item-color;
+    vertical-align: middle;
+
+    &:not(:first-child) {
+
+      &:before {
+        content: $lc-brdcr-separator;
+        margin: $lc-brdcr-margin;
+      }
+    }
+  }
+
+    .lc-breadcrumb__link {
+      font-weight: $lc-brdcr-weight;
+      @if $lc-brdcr-underline { text-decoration: underline; } @else { text-decoration: none; }
+      color: $lc-brdcr-link-color;
+
+      &:hover {
+        @if $lc-brdcr-underline { text-decoration: none; } @else { text-decoration: underline; }
+      }
+    }
+
+      .lc-breadcrumb__label {
+        @if $lc-brdcr-uppercase { text-transform: uppercase; }
+      }

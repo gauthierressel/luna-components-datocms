@@ -1,0 +1,48 @@
+/**
+ * LUNA-COMPONENT
+ * Breadcrumb
+ ********************************* */
+
+
+/ USAGE
+
+  = ui_component("luna-components/lc-breadcrumb",
+    items: [ \
+      { \
+        label: "Page d'accueil",
+        href: "/",
+        title: "Retour à la page d'accueil",
+      },
+      { \
+        label: "Page liste",
+        href: "#",
+        title: "Aller à la page liste",
+      },
+      { \
+        label: "Page détail",
+        href: "#",
+        title: "Aller à la page détail",
+      },
+    ],
+    additional_classes: "",
+  )
+
+
+/ VARIABLES
+
+- items = items || [ { label: "Accueil", attributes: [ href: "/", title: "Retour à l'accueil" ] } ]
+- separator = separator || "›"
+
+
+/ MARKUP
+
+ol.lc-breadcrumb(class=additional_classes itemscope itemtype="http://schema.org/BreadcrumbList")
+  - items.each_with_index do |item, index|
+    li.lc-breadcrumb__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+      - if (index + 1) != items.length
+        = link_to item[:href], :title => item[:title], :class => "lc-breadcrumb__link", :itemprop => "item" do
+          span.lc-breadcrumb__label(itemprop="name")= item[:label]
+          meta(itemprop="position" content="#{index+1}")
+      - else
+        span.lc-breadcrumb__label(itemprop="name")= item[:label]
+        meta(itemprop="position" content="#{index+1}")

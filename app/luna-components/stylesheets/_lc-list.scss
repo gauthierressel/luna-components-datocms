@@ -1,0 +1,43 @@
+/**
+ * LUNA-COMPONENT
+ * List
+ ********************************* */
+
+
+// Variables
+$lc-list-custom-bullet: false !default;
+$lc-list-custom-bullet-position: 0 0 !default;
+$lc-list-space: 20px !default;
+
+
+// Styles
+.lc-list {
+
+}
+
+ol.lc-list {
+  list-style: decimal;
+  margin-left: rem($lc-list-space);
+}
+
+ul.lc-list {
+
+  @if $lc-list-custom-bullet == false {
+    list-style: disc;
+    margin-left: rem($lc-list-space);
+  }
+
+  @else {
+    list-style: none;
+  }
+}
+
+  .lc-list__item {
+
+    @if $lc-list-custom-bullet != false {
+      ul.lc-list & {
+        padding-left: rem($lc-list-space);
+        background: url($lc-list-custom-bullet) no-repeat $lc-list-custom-bullet-position;
+      }
+    }
+  }

@@ -1,0 +1,77 @@
+/**
+ * LUNA-COMPONENT
+ * Button
+ ********************************* */
+
+
+// Variables
+
+// Base
+$lc-button-padding: 10px 20px !default;
+$lc-button-font-size: 16px !default;
+$lc-button-line-height: 22px !default;
+$lc-button-letter-spacing: false !default;
+$lc-button-uppercase: true !default;
+$lc-button-color: #fff !default;
+$lc-button-background-color: #000 !default;
+
+// Border
+$lc-button-has-border: false !default;
+$lc-button-border-width: 1px !default;
+$lc-button-border-color: #000 !default;
+
+// Border radius
+$lc-button-has-border-radius: true !default;
+$lc-button-border-radius: 4px !default;
+
+// Transition on hover
+// Available default transitions: fade, colors
+$lc-button-transition: "colors" !default;
+$lc-button-transition-duration: 0.3s !default;
+
+
+
+// Styles
+.lc-button {
+  display: inline-block;
+  padding: rem($lc-button-padding);
+  text-decoration: none;
+  color: $lc-button-color;
+  background-color: $lc-button-background-color;
+
+  @if $lc-button-has-border { border: $lc-button-border-width solid $lc-button-border-color; }
+
+  @if $lc-button-has-border-radius { border-radius: rem($lc-button-border-radius); }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Animations
+  @if $lc-button-transition == "fade" {
+    opacity: 1;
+    transition: opacity $lc-button-transition-duration ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  @if $lc-button-transition == "colors" {
+    transition: color $lc-button-transition-duration ease, background-color $lc-button-transition-duration ease;
+
+    &:hover {
+      color: $lc-button-background-color;
+      background-color: $lc-button-color;
+    }
+  }
+}
+
+  .lc-button__label {
+    font-size: rem($lc-button-font-size);
+    line-height: rem($lc-button-line-height);
+
+    @if $lc-button-uppercase { letter-spacing: $lc-button-letter-spacing; }
+
+    @if $lc-button-uppercase { text-transform: uppercase; }
+  }

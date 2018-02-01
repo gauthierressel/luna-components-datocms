@@ -1,0 +1,44 @@
+// Colors
+$color-background: #eee;
+$color-foreground: #666;
+
+$color-primary: red;
+$color-secondary: blue;
+
+// Fonts
+$font-default: "Helvetica Neue", Arial, sans-serif;
+$font-primary: $font-default;
+$font-serif: Georgia, Times, "Times New Roman", serif;
+$font-code: Inconsolata, Monaco, Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+
+// Font-size + line-height
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+// Z-indexes
+$z-header: 2;
+$z-main: 1;
+
+// Dimensions
+$gutter-size: 20px;
+$container-width: 940px;
+
+// Breakpoints
+$mq-breakpoints:
+  "small" 480px,
+  "medium" 720px,
+  "large" 960px;
+
+// Rem
+$rem-fallback: true;
+$rem-baseline: 10px;
+
+// Resolution
+$resolution-default: 2;
+
+// Sprites
+$sprite-pixel-ratio: $resolution-default;
+$sprite-asset-pipeline: true;
+$sprite-rem: true;
+$sprite-rem-fallback: $rem-fallback;
+$sprite-rem-baseline: $rem-fallback;

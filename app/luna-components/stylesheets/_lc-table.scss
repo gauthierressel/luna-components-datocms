@@ -1,0 +1,108 @@
+/**
+ * LUNA-COMPONENT
+ * Table
+ ********************************* */
+
+
+// Variables
+
+// Layout
+$lc-table-fullwidth: true !default;
+$lc-table-centered: false !default;
+
+// Default cell
+$lc-table-cell-padding: 10px 20px !default;
+$lc-table-cell-align: center !default;
+$lc-table-background-color: #fff !default;
+$lc-table-border-width: 1px !default;
+$lc-table-border-color: #dcdcdc !default;
+
+// Head, foot & label
+$lc-table-head-padding: 20px !default;
+$lc-table-head-background-color: #dcdcdc !default;
+$lc-table-head-align: center !default;
+
+$lc-table-foot-padding: 20px !default;
+$lc-table-foot-background-color: #dcdcdc !default;
+$lc-table-foot-align: center !default;
+
+$lc-table-label-width: 250px !default;
+$lc-table-label-background-color: #dcdcdc !default;
+$lc-table-label-align: right !default;
+
+// Border-radius
+$lc-table-has-border-radius: false !default;
+$lc-table-border-radius: 5px !default;
+
+// Shadow
+$lc-table-has-shadow: false !default;
+$lc-table-shadow-color: #dcdcdc !default;
+$lc-table-shadow-width: 10px !default;
+$lc-table-shadow-spacing: 5px !default;
+
+
+// Styles
+.lc-table {
+
+  @if $lc-table-fullwidth == true {
+    width: 100%;
+  }
+
+  @if $lc-table-centered == true {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @if $lc-table-has-shadow { @include rem(box-shadow, $lc-table-shadow-spacing $lc-table-shadow-spacing $lc-table-shadow-width $lc-table-shadow-color); }
+
+  @if $lc-table-has-border-radius {
+    @include rem(border-radius, $lc-table-border-radius);
+    overflow: hidden;
+  }
+}
+
+  .lc-table__head {
+
+  }
+
+  .lc-table__body {
+
+  }
+
+  .lc-table__foot {
+
+  }
+
+    .lc-table__row {
+
+    }
+
+      .lc-table__cell {
+        @include rem(padding, $lc-table-cell-padding);
+        text-align: $lc-table-cell-align;
+        background-color: $lc-table-background-color;
+        border: $lc-table-border-width solid $lc-table-border-color;
+
+        .lc-table__head & {
+          @include rem(padding, $lc-table-head-padding);
+          text-align: $lc-table-head-align;
+          background-color: $lc-table-head-background-color;
+        }
+
+        .lc-table__foot & {
+          @include rem(padding, $lc-table-head-padding);
+          text-align: $lc-table-foot-align;
+          background-color: $lc-table-foot-background-color;
+        }
+      }
+
+      th.lc-table__cell {
+        @include rem(width, $lc-table-label-width);
+        background-color: $lc-table-label-background-color;
+
+        .lc-table__head &,
+        .lc-table__body &,
+        .lc-table__foot & {
+          text-align: $lc-table-label-align;
+        }
+      }
